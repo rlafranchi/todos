@@ -96,7 +96,7 @@
 	};
 
     Model.prototype.delete = function(id, callback) {
-        this.storage.destroy(id, callback);
+        this.storage.destroy(callback, id);
     };
 
 	// Export to window
