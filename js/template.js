@@ -14,7 +14,8 @@
 		+			'<input class="toggle" type="checkbox" {{checked}}>'
 		+			'<label>{{title}}</label>'
 		+		'</div>'
-		+	'</li>';
+        +       '<div class="destroy"></div>'
+		+	'</li>'
 	}
 
 	/**

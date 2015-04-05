@@ -24,6 +24,10 @@
 		that.view.bind('toggleAll', function (status) {
 			that.toggleAll(status.completed);
 		});
+
+		that.view.bind('deleteTodo', function (item) {
+			that.deleteItem(item.id);
+		});
 	}
 
 	/**
@@ -84,6 +88,20 @@
 			that._filter(true);
 		});
 	};
+
+    /**
+     * Delete an Item
+     */
+    Controller.prototype.deleteItem = function (id) {
+        var that = this;
+
+        that.model.delete(id, function () {
+			that.view.render('elementComplete', {
+				id: id,
+			});
+			that._filter(true);
+        });
+    }
 
 	/**
 	 * Give it an ID of a model and a checkbox and it will update the item

@@ -113,6 +113,28 @@
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
 	};
 
+    Store.prototype.destroy = function (callback, id) {
+        var data = JSON.parse(localStorage[this._dbName]);
+		var todos = data.todos;
+
+        callback = callback || function () {};
+
+        // If an ID was actually given, find the item and update each property
+		if (id) {
+            debugger;
+			for (var i = 0; i < todos.length; i++) {
+				if (todos[i].id === id) {
+					todos.splice(i, 1);
+                    debugger;
+					break;
+				}
+			}
+
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
+		}
+    };
+
 	// Export to window
 	window.app = window.app || {};
 	window.app.Store = Store;

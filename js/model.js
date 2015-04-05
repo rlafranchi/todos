@@ -95,6 +95,10 @@
 		});
 	};
 
+    Model.prototype.delete = function(id, callback) {
+        this.storage.destroy(id, callback);
+    };
+
 	// Export to window
 	window.app = window.app || {};
 	window.app.Model = Model;
